@@ -8,4 +8,5 @@ Siinä on käytetty [markdown-notaatiota](https://guides.github.com/features/mas
 
 ### Viikko1
 [gitlog.txt](https://github.com/leevileh/otm-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+
 [komentorivi.txt](https://github.com/leevileh/otm-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
