@@ -1,0 +1,115 @@
+commit bbb93ba79a8296236040f256e3a3396ec4bfd503
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 15:12:21 2018 +0200
+
+    file1 poistettu ja file2 uudelleennimetty file22:ksi
+
+ tiedostoja/file1  | 0
+ tiedostoja/file2  | 0
+ tiedostoja/file22 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 5eb6e37cf1dbe4443af6aab3872f440b8502dc78
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 15:07:55 2018 +0200
+
+    tiedostoja ja file1,2,3 luotu
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit ad610f4510926b20e636996521f621b381acfd9f
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 14:42:15 2018 +0200
+
+    ekan ja kolmannen muokkaus
+
+ eka.txt    | 4 ++--
+ kolmas.txt | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 9f68334f887cc5243580157b487e44b285696ae2
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 14:39:05 2018 +0200
+
+    uudelleennimeäminen
+
+ eka.txt      | 6 ++++++
+ tiedosto.txt | 6 ------
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+commit 93d36ced1a12bdd5279bbfc59a0a6c65dcb4256b
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 14:37:22 2018 +0200
+
+    toinen poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 0fe3fb7ba2bdaa2fcb3420c3db1bf6166f7b0944
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 14:32:51 2018 +0200
+
+    poistettu osa ja lisätty tiedostoon
+
+ tiedosto.txt | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+commit ef2848fc9aa33e8103b32ffcd055e341391642c7
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 14:30:51 2018 +0200
+
+    paljon tekstiä tiedostoon
+
+ tiedosto.txt | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+commit cf10656cf13e9a3b3324654bb4f99ecf3de03199
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 13:18:37 2018 +0200
+
+    stuff ja kamaa lisätty
+
+ stuff/kamaa.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit d153404509d3d2f041f2a87d6cf16594418e67d2
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 13:16:53 2018 +0200
+
+    toinen.txt ja kolmas.txt muokkaus
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 24349f997d8eb84f4dad4ebde8f0edd50c737bc8
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 13:13:39 2018 +0200
+
+    Unohdin -m ja viestin. Tiedoston kolmas luonti.
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit a59fc7fd6508bce15f29127f110a7721c94a2f07
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 13:10:51 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit fe09600816960d402690c4492ae502755bc27946
+Author: leevileh <lehtonen.leevi@gmail.com>
+Date:   Thu Mar 15 13:05:04 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
