@@ -11,4 +11,4 @@ Siinä on käytetty [markdown-notaatiota](https://guides.github.com/features/mas
 
 [komentorivi.txt](https://github.com/leevileh/otm-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
-Tämä on paikallinen muutos
+Tämä on paikallinen muutos jolla luodaan epäsynkrooni
