@@ -23,7 +23,20 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli pelaaja.
 - auto ei voi mennä kentän reunojen läpi
 - ajan mittaaminen alkaa kun auto ylittää lähtö/maaliviivan
   - ajan mittaaminen päättyy kun auto ylittää uudestaan lähtö/maaliviivan
-  - peliä ei voi huijata ylittämällä lähtöviivaa, peruuttamalla ja ylittämällä sen heti uudestaan
+  - peliä ei voi huijata ylittämällä lähtöviivaa, peruuttamalla ja ylittämällä se heti uudestaan
   
 ### Pelaamisen jälkeen
 - käyttäjä voi tallentaa parhaan kierrosaikansa "high-score" -listalle
+
+### Jatkokehitysideoita  
+Mikäli aikaa riittää voidaan perusversiota täydentää esimerkiksi seuraavilla toiminnallisuuksilla   
+- reunaan törmääminen aiheuttaa jonkinlaisen kimpoamisefektin
+- realistisemmat ajo-ominaisuudet
+  - auto ei voi kiihtyä loputtomiin
+  - kun autoa ei kiihdytetä, hidastuu sen vauhti automaattisesti
+  - jonkinlainen kitkankaltainen ominaisuus renkaisiin, jotta suunta vaihtuisi pelkästä renkaiden kääntämisestä (eikä kiihdyttämällä kuten avaruuspeleissä)
+- mahdollisuus nähdä paras ajettu kierros "haamuna" radalla
+- mahdollisuus kaksinpeliin
+  - mahdollisuus ajaa useampi kierros
+- pelimusiikki ja äänitehosteita
+- mahdollisuus piirtää omia ratoja
