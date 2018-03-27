@@ -6,7 +6,8 @@ Siinä on käytetty [markdown-notaatiota](https://guides.github.com/features/mas
 
 ### Viikko2
 
-[Linkki alustavaan määrittelydokumenttiin](https://github.com/leevileh/otm-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)
+[Linkki alustavaan määrittelydokumenttiin](https://github.com/leevileh/otm-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)  
+
 [Linkki työaikakirjanpitoon](https://github.com/leevileh/otm-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)
 
 ### Viikko1
