@@ -16,7 +16,7 @@ public class Car {
         this.car.setTranslateY(y);
         
         this.movement = new Point2D(0, 0);
-    }
+    }   
     
     public Polygon getCar() {
         return car;
@@ -51,6 +51,10 @@ public class Car {
         yChange *= 0.05;
         
         this.movement = this.movement.add(xChange, yChange);
+    }
+    
+    public void slowDown() {
+        this.movement = this.movement.multiply(0.98);
     }
 
 }

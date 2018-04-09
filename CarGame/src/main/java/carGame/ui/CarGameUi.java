@@ -53,6 +53,10 @@ public class CarGameUi extends Application{
                     car.accelerate();
                 }
                 
+                if((pressedKeys.getOrDefault(KeyCode.UP, false)) == false){
+                    car.slowDown();
+                }
+                
                 car.move();
             }
         }.start();
