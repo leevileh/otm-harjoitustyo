@@ -1,17 +1,27 @@
-# README
+# CarGame
+Sovellus on erittäin yksinkertainen autopeli. Tällä hetkellä sovellus on tilassa, jossa avautuvaan peliruutuun voi piirtää radan seinää, ja autolla voi ajaa. Auton ja seinän kohtaaminen ei vielä toimi kovin toivotusti. Lisäksi kentän luominen ja ajaminen on tarkoitus eriyttää myöhemmin.
 
-Siinä on käytetty [markdown-notaatiota](https://guides.github.com/features/mastering-markdown/)
+## Dokumentaatio
+[Vaatimusmäärittely](https://github.com/leevileh/otm-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)
 
-# Tehtävät
+[Työaikakirjanpito](https://github.com/leevileh/otm-harjoitustyo/blob/master/dokumentointi/tuntikirjanpito.md)
 
-### Viikko2
+## Komentorivitoiminnot
 
-[Linkki alustavaan määrittelydokumenttiin](https://github.com/leevileh/otm-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)  
+### Testaus
 
-[Linkki työaikakirjanpitoon](https://github.com/leevileh/otm-harjoitustyo/blob/master/dokumentointi/tuntikirjanpito.md)
+Testit suoritetaan komennolla
 
-### Viikko1
-[gitlog.txt](https://github.com/leevileh/otm-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+```
+mvn test
+```
 
-[komentorivi.txt](https://github.com/leevileh/otm-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+Testikattavuusraportti luodaan komennolla
 
+```
+mvn jacoco:report
+```
+
+Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
+
+Tällä hetkellä sovelluksella on ainoastaan yksi testi. Se toimii.
