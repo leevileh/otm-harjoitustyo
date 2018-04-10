@@ -9,11 +9,14 @@ public class Car {
 
     private Polygon car;
     private Point2D movement;
+    public Track track;
     
-    public Car(int x, int y) {
+    public Car(int x, int y, Track track) {
         this.car = new Polygon(0,0, 20,0, 25,5, 20,10, 0,10);
         this.car.setTranslateX(x);
         this.car.setTranslateY(y);
+        
+        this.track = track;
         
         this.movement = new Point2D(0, 0);
     }   
@@ -39,8 +42,13 @@ public class Car {
     }
     
     public void move() {
-        this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
-        this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY());
+        if(this.track.content(this.car.getTranslateX(), this.car.getTranslateY()) == TrackMaterial.WALL) {
+            this.car.setTranslateX(this.car.getTranslateX() - 5*this.movement.getX());
+            this.car.setTranslateY(this.car.getTranslateY() - 5*this.movement.getY());            
+        } else {
+            this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
+            this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY());
+        }
     }
     
     public void accelerate() {
@@ -53,7 +61,17 @@ public class Car {
         this.movement = this.movement.add(xChange, yChange);
     }
     
-    public void slowDown() {
+    public void reverse() {
+        double xChange = Math.cos(Math.toRadians(this.car.getRotate()));
+        double yChange = Math.sin(Math.toRadians(this.car.getRotate()));
+        
+        xChange *= 0.05;
+        yChange *= 0.05;
+        
+        this.movement = this.movement.add(-xChange, -yChange);
+    }
+    
+    public void decelerate() {
         this.movement = this.movement.multiply(0.98);
     }
 
