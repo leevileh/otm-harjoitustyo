@@ -1,5 +1,5 @@
 
-package carGame.domain;
+package cargame.domain;
 
 
 public enum TrackMaterial {

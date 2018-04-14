@@ -1,6 +1,8 @@
 
-package carGame.domain;
+package cargame.domain;
 
+import cargame.domain.Track;
+import cargame.domain.TrackMaterial;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

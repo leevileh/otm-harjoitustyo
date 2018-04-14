@@ -1,10 +1,10 @@
 
 
-package carGame.ui;
+package cargame.ui;
 
-import carGame.domain.Car;
-import carGame.domain.Track;
-import carGame.domain.TrackMaterial;
+import cargame.domain.Car;
+import cargame.domain.Track;
+import cargame.domain.TrackMaterial;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.animation.AnimationTimer;
