@@ -9,3 +9,6 @@
 | 10.04 | 1   | Repositorion ajantasalle saattaminen ja yleinen suunnittelu |
 | 14.04 | 3   | Ajotuntuman ja seiniin osumisen kehittäminen tasolle joka tarvittaessa riittää |
 | 14.04 | 1   | Checkstylen käyttöönotto
+| 17.04 | 3   | Testien kirjoittaminen ja samalla mieleen tulleiden parannusten tekeminen ajotuntumaan |
+| 17.04 | 1   | Arkkitehtuuritiedoston luominen ja alustavan sisällön tuotto, tuntikirjanpidon päivittäminen ym. pikkuhommat |
+| yht | 19 |
