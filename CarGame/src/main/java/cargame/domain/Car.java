@@ -22,7 +22,7 @@ public class Car {
     }   
     
     public Polygon getCar() {
-        return car;
+        return this.car;
     }
     
     public void setMovement(Point2D movement) {
@@ -42,13 +42,13 @@ public class Car {
     }
     
     public void move() {
+        this.movement = this.movement.multiply(0.98);
+        
         if (this.track.content(this.car.getTranslateX(), this.car.getTranslateY()) == TrackMaterial.WALL) {
             this.setMovement(this.getMovement().multiply(-1));
             this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
             this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY()); 
             this.setMovement(this.getMovement().multiply(0.2));
-            
-            System.out.println(this.movement.toString());
             
         } else {
             this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
@@ -60,8 +60,8 @@ public class Car {
         double xChange = Math.cos(Math.toRadians(this.car.getRotate()));
         double yChange = Math.sin(Math.toRadians(this.car.getRotate()));
         
-        xChange *= 0.05;
-        yChange *= 0.05;
+        xChange *= 0.1;
+        yChange *= 0.1;
         
         this.movement = this.movement.add(xChange, yChange);
     }

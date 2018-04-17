@@ -5,13 +5,10 @@
  */
 package cargame.domain;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import cargame.domain.Track;
+import javafx.geometry.Point2D;
 
 /**
  *
@@ -19,28 +16,55 @@ import cargame.domain.Track;
  */
 public class CarTest {
     
-    public CarTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    Car testCar;
+    Track testTrack;
     
     @Before
     public void setUp() {
+        testTrack = new Track(100,100);
+        testCar = new Car(25, 25, testTrack);
+    }
+
+    @Test
+    public void getCarWorks() {
+        assertNotNull("method getCar() returns null", testCar.getCar());
     }
     
-    @After
-    public void tearDown() {
+    @Test
+    public void setAndGetMovementWorks() {
+        testCar.setMovement(new Point2D(1, 1));
+        assertEquals("Point2D [x = 1.0, y = 1.0]", testCar.getMovement().toString());
     }
-
-
+    
+    @Test
+    public void turnRightWorks() {
+        testCar.turnRight();
+        double rotate = testCar.getCar().getRotate();
+        assertEquals("5.0", Double.toString(rotate));
+    }
+    
+    @Test
+    public void turnLeftWorks() {
+        testCar.turnLeft();
+        double rotate = testCar.getCar().getRotate();
+        assertEquals("-5.0", Double.toString(rotate));
+    }
+    
+    @Test
+    public void movingOnEmptyTrackWorks() {
+        testCar.setMovement(new Point2D(1, 1));
+        testCar.move();
+        assertTrue(testCar.getCar().getTranslateX() == 25.98 
+                && testCar.getCar().getTranslateY() == 25.98);
+    }
+    
 //    @Test
-//    public void decelerationWorks() {
-//        Car testCar = new Car(10, 10, Track track = new Track (200, 200));
+//    public void canNotMoveThroughWall() {
+//        testTrack.add(30, 25, TrackMaterial.WALL);
+//        testCar.setMovement(new Point2D(5, 0));
+//        for (int i = 0; i < 10; i++) {
+//            testCar.move();
+//        }
+//        assertTrue(testCar.getCar().getTranslateX() < 26);
 //    }
 }
