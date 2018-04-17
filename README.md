@@ -6,6 +6,8 @@ Sovellus on erittäin yksinkertainen autopeli. Tällä hetkellä sovellus on til
 
 [Työaikakirjanpito](https://github.com/leevileh/otm-harjoitustyo/blob/master/dokumentointi/tuntikirjanpito.md)
 
+[Arkkitehtuuri](https://github.com/leevileh/otm-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
+
 ## Komentorivitoiminnot
 
 ### Testaus
