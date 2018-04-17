@@ -24,4 +24,10 @@ mvn jacoco:report
 
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
 
-Tällä hetkellä sovelluksella on ainoastaan yksi testi. Se toimii.
+
+### Checkstyle
+Tiedostossa [checkstyle.xml](https://github.com/leevileh/otm-harjoitustyo/blob/master/CarGame/checkstyle.xml) määritetyt tarkistukset suoritetaan komennolla
+```
+mvn jxr:jxr checkstyle:checkstyle
+```
+Raportti jossa näkyy mahdolliset virheet löytyy avaamalla selaimella tiedosto _target/site/checkstyle.html_
