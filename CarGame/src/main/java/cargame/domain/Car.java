@@ -9,7 +9,7 @@ public class Car {
 
     private Polygon car;
     private Point2D movement;
-    public Track track;
+    private Track track;
     
     public Car(int x, int y, Track track) {
         this.car = new Polygon(0, 0, 20, 0, 25, 5, 20, 10, 0, 10);
@@ -23,6 +23,10 @@ public class Car {
     
     public Polygon getCar() {
         return this.car;
+    }
+    
+    public Track getTrack() {
+        return this.track;
     }
     
     public void setMovement(Point2D movement) {

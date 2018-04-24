@@ -21,7 +21,7 @@ public class CarTest {
     
     @Before
     public void setUp() {
-        testTrack = new Track(100,100);
+        testTrack = new Track(100,100, "testTrack");
         testCar = new Car(25, 25, testTrack);
     }
 

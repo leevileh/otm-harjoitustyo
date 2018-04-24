@@ -9,11 +9,13 @@ public class Track {
     private Map<Integer, HashMap<Integer, TrackMaterial>> trackMap;
     private int width;
     private int height;
+    private String name;
     
-    public Track(int width, int height) {
+    public Track(int width, int height, String name) {
         this.trackMap = new HashMap<>();
         this.width = width;
         this.height = height;
+        this.name = name;
         
         for (int i = 0; i <= width; i++) {
             this.trackMap.putIfAbsent(i, new HashMap<>());
@@ -37,5 +39,17 @@ public class Track {
             return trackMap.get((int) x).get((int) y);
         }
         
+    }
+    
+    public Integer getWidth(){
+        return this.width;
+    }
+    
+    public Integer getHeigth(){
+        return this.height;
+    }
+    
+    public String getName(){
+        return this.name;
     }
 }

@@ -34,7 +34,7 @@ public class TrackTest {
 
     @Test
     public void trackMapContainsEmptyMaterial() {
-        Track testTrack = new Track(10,10);
+        Track testTrack = new Track(10,10, "TestTrack");
         assertEquals(TrackMaterial.EMPTY, testTrack.content(5, 5));
     }
 }
