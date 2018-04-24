@@ -41,15 +41,15 @@ public class Track {
         
     }
     
-    public Integer getWidth(){
+    public Integer getWidth() {
         return this.width;
     }
     
-    public Integer getHeigth(){
+    public Integer getHeigth() {
         return this.height;
     }
     
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 }
