@@ -14,4 +14,12 @@
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
+        <action>
+            <actionName>CUSTOM-jarin_luonti</actionName>
+            <displayName>jarin_luonti</displayName>
+            <goals>
+                <goal>mvn</goal>
+                <goal>package</goal>
+            </goals>
+        </action>
     </actions>
