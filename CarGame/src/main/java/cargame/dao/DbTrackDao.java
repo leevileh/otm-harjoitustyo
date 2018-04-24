@@ -17,7 +17,7 @@ public class DbTrackDao implements TrackDao<Track, Integer> {
     }
 
     
-    public void save(Track track) throws SQLException{
+    public void save(Track track) throws SQLException {
 
 //  Tarvitaan vasta jos saan aikaiseksi kenttäeditorin        
 //        Connection conn = database.getConnection();
@@ -26,8 +26,8 @@ public class DbTrackDao implements TrackDao<Track, Integer> {
 //                + " VALUES (?)");
 //        stmt.setString(1, track.getName());
         
-        for (int i = 0; i < track.getWidth(); i++){
-            for (int j = 0; j < track.getHeigth(); j++){
+        for (int i = 0; i < track.getWidth(); i++) {
+            for (int j = 0; j < track.getHeigth(); j++) {
                 if (track.content(i, j) == TrackMaterial.WALL) {
                     saveCoordinate(i, j, 1, 2);
                 }
@@ -35,15 +35,15 @@ public class DbTrackDao implements TrackDao<Track, Integer> {
         }
     }
     
-    private void saveCoordinate(int x, int y, int track_id, int material_id) throws SQLException{
+    private void saveCoordinate(int x, int y, int trackId, int materialId) throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO coordinate"
                 + "(xCoordinate, yCoordinate, track_id, material_id)"
                 + " VALUES (?, ?, ?, ?)");
         stmt.setInt(1, x);
         stmt.setInt(2, y);
-        stmt.setInt(3, track_id);
-        stmt.setInt(4, material_id);
+        stmt.setInt(3, trackId);
+        stmt.setInt(4, materialId);
         
         stmt.executeUpdate();
         stmt.close();
