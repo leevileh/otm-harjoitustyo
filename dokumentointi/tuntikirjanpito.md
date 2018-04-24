@@ -11,4 +11,7 @@
 | 14.04 | 1   | Checkstylen käyttöönotto
 | 17.04 | 3   | Testien kirjoittaminen ja samalla mieleen tulleiden parannusten tekeminen ajotuntumaan |
 | 17.04 | 1   | Arkkitehtuuritiedoston luominen ja alustavan sisällön tuotto, tuntikirjanpidon päivittäminen ym. pikkuhommat |
-| yht | 19 |
+| 22.04 | 2   | Tietokannan parissa työskentelyn aloittaminen |
+| 23.04 | 2   | Tietokannan ja DAO:n kehitys |
+| 24.04 | 8   | Tietokanta toimintaan, muut viikon 5 tavoitteet |
+| yht | 31 |
