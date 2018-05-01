@@ -17,7 +17,7 @@ public class DbTrackDao implements TrackDao<Track, Integer> {
     }
 
     
-    public void save(Track track) throws SQLException {
+    public void save(Track track, TrackMaterial material) throws SQLException {
 
 //  Tarvitaan vasta jos saan aikaiseksi kenttäeditorin        
 //        Connection conn = database.getConnection();
@@ -28,8 +28,8 @@ public class DbTrackDao implements TrackDao<Track, Integer> {
         
         for (int i = 0; i < track.getWidth(); i++) {
             for (int j = 0; j < track.getHeigth(); j++) {
-                if (track.content(i, j) == TrackMaterial.WALL) {
-                    saveCoordinate(i, j, 1, 2);
+                if (track.content(i, j) == material) {
+                    saveCoordinate(i, j, 1, material.ordinal()+1);
                 }
             }
         }
@@ -59,6 +59,9 @@ public class DbTrackDao implements TrackDao<Track, Integer> {
         while (rs.next()) {
             if (rs.getInt("material_id") == 2) {
                 foundTrack.add(rs.getInt("xCoordinate"), rs.getInt("yCoordinate"), TrackMaterial.WALL);
+            }
+            if (rs.getInt("material_id") == 3) {
+                foundTrack.add(rs.getInt("xCoordinate"), rs.getInt("yCoordinate"), TrackMaterial.CHECK1);
             }
         }
         stmt.close();

@@ -2,6 +2,8 @@
 
 package cargame.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 
@@ -10,13 +12,15 @@ public class Car {
     private Polygon car;
     private Point2D movement;
     private Track track;
+    private Timer carTimer;
     
-    public Car(int x, int y, Track track) {
+    public Car(int x, int y, Track track, Timer carTimer) {
         this.car = new Polygon(0, 0, 20, 0, 25, 5, 20, 10, 0, 10);
         this.car.setTranslateX(x);
         this.car.setTranslateY(y);
         
         this.track = track;
+        this.carTimer = carTimer;
         
         this.movement = new Point2D(0, 0);
     }   
@@ -47,17 +51,19 @@ public class Car {
     
     public void move() {
         this.movement = this.movement.multiply(0.98);
-        
-        if (this.track.content(this.car.getTranslateX(), this.car.getTranslateY()) == TrackMaterial.WALL) {
+        //this.track.content(this.car.getTranslateX(), this.car.getTranslateY()) == TrackMaterial.WALL
+        if (hitsMaterial(TrackMaterial.WALL)) {
             this.setMovement(this.getMovement().multiply(-1));
             this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
             this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY()); 
-            this.setMovement(this.getMovement().multiply(0.2));
-            
-        } else {
-            this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
-            this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY());
+            this.setMovement(this.getMovement().multiply(0.5));            
         }
+        if (hitsMaterial(TrackMaterial.CHECK1)) {
+            carTimer.reset();
+        }
+        this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
+        this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY());
+        
     }
     
     public void accelerate() {
@@ -82,6 +88,20 @@ public class Car {
     
     public void decelerate() {
         this.movement = this.movement.multiply(0.98);
+    }
+    
+    public boolean hitsMaterial(TrackMaterial material) {
+        List carVertices = new ArrayList<>();
+        carVertices = this.car.getPoints();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (this.track.content(this.car.getTranslateX() -2 + i, this.car.getTranslateY() - 2 + i) == material) {
+                    return true;
+                }
+//System.out.println(carVertices.get(i).toString() + "'" + carVertices.get(i+1).toString());                    
+            }
+        }
+        return false;
     }
 
 }
