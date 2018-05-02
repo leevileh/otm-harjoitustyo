@@ -30,4 +30,11 @@
                 <goal>checkstyle:checkstyle</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-jar2</actionName>
+            <displayName>jar2</displayName>
+            <goals>
+                <goal>package</goal>
+            </goals>
+        </action>
     </actions>

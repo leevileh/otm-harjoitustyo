@@ -181,6 +181,7 @@ public class CarGameUi extends Application{
     }
     
     public static void main(String[] args) throws ClassNotFoundException {
+        new File("db").mkdirs();
         File tiedosto = new File("db", "cargame.db");
         Database database = new Database("jdbc:sqlite:" + tiedosto.getAbsolutePath());
         
