@@ -15,8 +15,9 @@ public class Car {
     private Timer carTimer;
     private Boolean check2;
     private Boolean check3;
+    private Player player;
     
-    public Car(int x, int y, Track track, Timer carTimer) {
+    public Car(int x, int y, Track track, Timer carTimer, Player player) {
         this.car = new Polygon(0, 0, 20, 0, 25, 5, 20, 10, 0, 10);
         this.car.setTranslateX(x);
         this.car.setTranslateY(y);
@@ -26,6 +27,7 @@ public class Car {
         this.check2 = false;
         this.check3 = false;
         this.movement = new Point2D(0, 0);
+        this.player = new Player();
     }   
     
     public Polygon getCar() {
@@ -34,6 +36,10 @@ public class Car {
     
     public Track getTrack() {
         return this.track;
+    }
+    
+    public Player getPlayer() {
+        return this.player;
     }
     
     public void setMovement(Point2D movement) {
@@ -61,13 +67,15 @@ public class Car {
             this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY()); 
             this.setMovement(this.getMovement().multiply(0.5));            
         }
-        if (hitsMaterial(TrackMaterial.CHECK1) && check2 == true && check3 == true) {
+        if (hitsMaterial(TrackMaterial.CHECK1)) {
+            if(check2 == true && check3 == true) {
+                check2 = false;
+                check3 = false;
+                player.setLap(carTimer.getTime());
+                System.out.println(carTimer.getIntegerTime());
+                player.setIntLap(carTimer.getIntegerTime());
+            }
             carTimer.reset();
-            check2 = false;
-            check3 = false;
-            System.out.println("Kierrosaika tallennetaan");
-//        } else {
-//            carTimer.reset();
         }
         if (hitsMaterial(TrackMaterial.CHECK2)) {
             check2 = true;
@@ -108,9 +116,9 @@ public class Car {
     public boolean hitsMaterial(TrackMaterial material) {
         List carVertices = new ArrayList<>();
         carVertices = this.car.getPoints();
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (this.track.content(this.car.getTranslateX() -2 + i, this.car.getTranslateY() - 2 + i) == material) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (this.track.content(this.car.getTranslateX() -5 + i, this.car.getTranslateY() - 5 + i) == material) {
                     return true;
                 }
 //System.out.println(carVertices.get(i).toString() + "'" + carVertices.get(i+1).toString());                    

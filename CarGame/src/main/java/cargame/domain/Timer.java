@@ -16,7 +16,7 @@ public class Timer {
         this.tenths = 0;
     }
     
-    public String increase() {
+    public void increase() {
         this.tenths ++;
         if (this.tenths == 10) {
             this.seconds ++;
@@ -26,12 +26,18 @@ public class Timer {
             this.minutes ++;
             this.seconds = 0;
         }
+    }
+    
+    public String getTime() {
         if (seconds < 10) {
             return("0" + minutes + ":" + "0" + seconds + ":" + tenths);
         } else {
             return(minutes + ":" + seconds + ":" + tenths);
-        }
-        
+        }        
+    }
+    
+    public Integer getIntegerTime() {
+        return(tenths + 10*seconds + 600*minutes);
     }
     
     public void reset() {

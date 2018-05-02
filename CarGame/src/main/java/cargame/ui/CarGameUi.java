@@ -3,8 +3,10 @@
 package cargame.ui;
 
 import cargame.dao.Database;
+import cargame.dao.DbPlayerDao;
 import cargame.dao.DbTrackDao;
 import cargame.domain.Car;
+import cargame.domain.Player;
 import cargame.domain.Track;
 import cargame.domain.TrackMaterial;
 import cargame.domain.Timer;
@@ -27,6 +29,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -42,10 +45,13 @@ public class CarGameUi extends Application{
     @Override
     public void start(Stage stage) throws Exception{
         
-        File tiedosto = new File("db", "cargame.db");
-        Database database = new Database("jdbc:sqlite:" + tiedosto.getAbsolutePath());
+        File trackFile = new File("db", "cargame.db");
+        Database trackDb = new Database("jdbc:sqlite:" + trackFile.getAbsolutePath());
+        DbTrackDao trackSaverDao = new DbTrackDao(trackDb);
         
-        DbTrackDao trackSaverDao = new DbTrackDao(database);
+        File playerFile = new File("db", "player.db");
+        Database playerDb = new Database("jdbc:sqlite:" + playerFile.getAbsolutePath());
+        DbPlayerDao playerSaverDao = new DbPlayerDao(playerDb);
         
         // Starting view
         Label instructionText = new Label("Enter name of player:");
@@ -69,34 +75,48 @@ public class CarGameUi extends Application{
         
         //Game view
         this.materialUsed = TrackMaterial.CHECK3;
-        Pane gamePane = new Pane();
-        gamePane.setPrefSize(WIDTH, HEIGHT);
+        
+        BorderPane gamePane = new BorderPane();
+        
+//        Pane gamePane = new Pane();
+        gamePane.setPrefSize(WIDTH+100, HEIGHT+100);
         
         Canvas gameCanvas = new Canvas(WIDTH, HEIGHT);
-        GraphicsContext plotter = gameCanvas.getGraphicsContext2D();
-        plotter.setFill(Color.BLACK);
         
-        Button saveButton = new Button("Save track");
+        
+        Button saveButton = new Button("Save track");        
+        Button stopButton = new Button("End Game");
         Text text = new Text(10, 20, "Time: 0");
         
-        gamePane.getChildren().add(gameCanvas);
-        gamePane.getChildren().add(text);
+        HBox topBar = new HBox();
+        topBar.setSpacing(10);
+        topBar.getChildren().add(text);
+        topBar.getChildren().add(stopButton);
+        
+        
+        gamePane.setTop(gameCanvas);
+        gamePane.setBottom(topBar);
 //        gamePane.getChildren().add(saveButton);
+
+        GraphicsContext plotter = gameCanvas.getGraphicsContext2D();
+        plotter.setFill(Color.BLACK);
+
         
         Track gameTrack = trackSaverDao.findTrack();
         Timer timer = new Timer(gameTrack);
-        Car car = new Car(WIDTH/5, (HEIGHT)/5, gameTrack, timer);
+        Player gamePlayer = new Player();
+        Car car = new Car(WIDTH/5, (HEIGHT)/5, gameTrack, timer, gamePlayer);
         car.move();
         
         for(int i = 0; i < WIDTH; i++) {
             for(int j = 0; j < HEIGHT; j++) {
                 if(gameTrack.content(i, j) == TrackMaterial.WALL) {
                     plotter.setFill(Color.BLACK);
-                    plotter.fillRect(i, j, 1, 1);
+                    plotter.fillRect(i+15, j+5, 1, 1);
                 }
                 if(gameTrack.content(i, j) == TrackMaterial.CHECK1) {
                     plotter.setFill(Color.RED);
-                    plotter.fillRect(i, j, 5, 5);
+                    plotter.fillRect(i+15, j+5, 1, 1);
                 }
             }
         }
@@ -153,7 +173,8 @@ public class CarGameUi extends Application{
                 
                 time ++;   
                 if (time%7 == 0) {
-                    text.setText("Time: " + timer.increase());
+                    timer.increase();
+                    text.setText("Time: " + timer.getTime());
                 }
                     
                 car.move();
@@ -164,6 +185,7 @@ public class CarGameUi extends Application{
         
         startButton.setOnAction((event) -> {
             stage.setScene(gameScene);
+            car.getPlayer().setName(nameField.getText());
         });
         
         saveButton.setOnAction((event) -> {
@@ -174,6 +196,15 @@ public class CarGameUi extends Application{
             }
         });
         
+        stopButton.setOnAction((event) -> {
+            try {
+                playerSaverDao.savePlayersLaps(car.getPlayer());
+                System.out.println(playerSaverDao.findAll().toString());
+            } catch(SQLException ex) {
+                Logger.getLogger(CarGameUi.class.getName()).log(Level.SEVERE, null, ex);
+            }            
+        });
+        
         
         stage.setTitle("Let's Play!");
         stage.setScene(startScene);
@@ -181,11 +212,11 @@ public class CarGameUi extends Application{
     }
     
     public static void main(String[] args) throws ClassNotFoundException {
-        new File("db").mkdirs();
-        File tiedosto = new File("db", "cargame.db");
-        Database database = new Database("jdbc:sqlite:" + tiedosto.getAbsolutePath());
+//        new File("db").mkdirs();
+//        File tiedosto = new File("db", "cargame.db");
+//        Database database = new Database("jdbc:sqlite:" + tiedosto.getAbsolutePath());
         
-        DbTrackDao trackSaverDao = new DbTrackDao(database);
+//        DbTrackDao trackSaverDao = new DbTrackDao(database);
         
         System.out.println("The game is running...");
         launch(args);
