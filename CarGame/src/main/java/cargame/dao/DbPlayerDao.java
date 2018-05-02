@@ -33,7 +33,7 @@ public class DbPlayerDao {
     public void savePlayersLaps(Player player) throws SQLException {
         List<String> laptimes = player.getLaps();
         List<Integer> intTimes = player.getIntTimes();        
-        for(int i = 0; i < laptimes.size(); i++) {
+        for (int i = 0; i < laptimes.size(); i++) {
             saveLapTime(laptimes.get(i), intTimes.get(i), player.getName());
         }
     }

@@ -11,7 +11,7 @@ public class Player {
     private List<String> lapTimes;
     private List<Integer> intTimes;
     
-    public Player(){
+    public Player() {
         this.lapTimes = new ArrayList<>();
         this.intTimes = new ArrayList<>();
     }
@@ -41,7 +41,7 @@ public class Player {
         this.intTimes.add(intTime);
     }
     
-    public List<Integer> getIntTimes(){
+    public List<Integer> getIntTimes() {
         return this.intTimes;
     }
     

@@ -32,7 +32,7 @@ public class DbTrackDao implements TrackDao<Track, Integer> {
             for (int j = 0; j < track.getHeigth(); j++) {
 
                 if (track.content(i, j) == material) {
-                    saveCoordinate(i, j, 1, material.ordinal()+1);
+                    saveCoordinate(i, j, 1, material.ordinal() + 1);
 
                 }
             }
@@ -57,14 +57,13 @@ public class DbTrackDao implements TrackDao<Track, Integer> {
     public Track findTrack() throws SQLException {
         Track foundTrack = new Track(CarGameUi.WIDTH, CarGameUi.HEIGHT, "DbTrack");
         Connection conn = database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("Select * FROM coordinate");
-        
+        PreparedStatement stmt = conn.prepareStatement("Select * FROM coordinate");        
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {            
             if (rs.getInt("material_id") == 3 && foundTrack.content(rs.getInt("xCoordinate"), rs.getInt("yCoordinate")) == TrackMaterial.EMPTY) {
                 foundTrack.add(rs.getInt("xCoordinate"), rs.getInt("yCoordinate"), TrackMaterial.CHECK1);
             }
-            if (rs.getInt("material_id") == 4 && foundTrack.content(rs.getInt("xCoordinate"), rs.getInt("yCoordinate")) == TrackMaterial.EMPTY){
+            if (rs.getInt("material_id") == 4 && foundTrack.content(rs.getInt("xCoordinate"), rs.getInt("yCoordinate")) == TrackMaterial.EMPTY) {
                 foundTrack.add(rs.getInt("xCoordinate"), rs.getInt("yCoordinate"), TrackMaterial.CHECK2);
             }
             if (rs.getInt("material_id") == 5 && foundTrack.content(rs.getInt("xCoordinate"), rs.getInt("yCoordinate")) == TrackMaterial.EMPTY) {
@@ -76,8 +75,7 @@ public class DbTrackDao implements TrackDao<Track, Integer> {
         }
         stmt.close();
         rs.close();
-        conn.close(); 
-        
+        conn.close();         
         return foundTrack;
     }
 

@@ -17,27 +17,27 @@ public class Timer {
     }
     
     public void increase() {
-        this.tenths ++;
+        this.tenths++;
         if (this.tenths == 10) {
-            this.seconds ++;
+            this.seconds++;
             this.tenths = 0;
         }
         if (this.seconds == 59) {
-            this.minutes ++;
+            this.minutes++;
             this.seconds = 0;
         }
     }
     
     public String getTime() {
         if (seconds < 10) {
-            return("0" + minutes + ":" + "0" + seconds + ":" + tenths);
+            return ("0" + minutes + ":" + "0" + seconds + ":" + tenths);
         } else {
-            return(minutes + ":" + seconds + ":" + tenths);
+            return (minutes + ":" + seconds + ":" + tenths);
         }        
     }
     
     public Integer getIntegerTime() {
-        return(tenths + 10*seconds + 600*minutes);
+        return (tenths + 10 * seconds + 600 * minutes);
     }
     
     public void reset() {
