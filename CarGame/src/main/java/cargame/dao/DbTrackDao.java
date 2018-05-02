@@ -60,12 +60,18 @@ public class DbTrackDao implements TrackDao<Track, Integer> {
         PreparedStatement stmt = conn.prepareStatement("Select * FROM coordinate");
         
         ResultSet rs = stmt.executeQuery();
-        while (rs.next()) {
+        while (rs.next()) {            
+            if (rs.getInt("material_id") == 3 && foundTrack.content(rs.getInt("xCoordinate"), rs.getInt("yCoordinate")) == TrackMaterial.EMPTY) {
+                foundTrack.add(rs.getInt("xCoordinate"), rs.getInt("yCoordinate"), TrackMaterial.CHECK1);
+            }
+            if (rs.getInt("material_id") == 4 && foundTrack.content(rs.getInt("xCoordinate"), rs.getInt("yCoordinate")) == TrackMaterial.EMPTY){
+                foundTrack.add(rs.getInt("xCoordinate"), rs.getInt("yCoordinate"), TrackMaterial.CHECK2);
+            }
+            if (rs.getInt("material_id") == 5 && foundTrack.content(rs.getInt("xCoordinate"), rs.getInt("yCoordinate")) == TrackMaterial.EMPTY) {
+                foundTrack.add(rs.getInt("xCoordinate"), rs.getInt("yCoordinate"), TrackMaterial.CHECK3);
+            }
             if (rs.getInt("material_id") == 2) {
                 foundTrack.add(rs.getInt("xCoordinate"), rs.getInt("yCoordinate"), TrackMaterial.WALL);
-            }
-            if (rs.getInt("material_id") == 3) {
-                foundTrack.add(rs.getInt("xCoordinate"), rs.getInt("yCoordinate"), TrackMaterial.CHECK1);
             }
         }
         stmt.close();

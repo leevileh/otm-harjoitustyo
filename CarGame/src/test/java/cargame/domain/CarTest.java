@@ -18,11 +18,13 @@ public class CarTest {
     
     Car testCar;
     Track testTrack;
+    Timer testTimer;
     
     @Before
     public void setUp() {
         testTrack = new Track(100,100, "testTrack");
-        testCar = new Car(25, 25, testTrack);
+        testTimer = new Timer(testTrack);
+        testCar = new Car(25, 25, testTrack, testTimer);
     }
 
     @Test

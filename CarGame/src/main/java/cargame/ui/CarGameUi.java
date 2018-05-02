@@ -81,7 +81,7 @@ public class CarGameUi extends Application{
         
         gamePane.getChildren().add(gameCanvas);
         gamePane.getChildren().add(text);
-        gamePane.getChildren().add(saveButton);
+//        gamePane.getChildren().add(saveButton);
         
         Track gameTrack = trackSaverDao.findTrack();
         Timer timer = new Timer(gameTrack);
@@ -92,7 +92,7 @@ public class CarGameUi extends Application{
             for(int j = 0; j < HEIGHT; j++) {
                 if(gameTrack.content(i, j) == TrackMaterial.WALL) {
                     plotter.setFill(Color.BLACK);
-                    plotter.fillRect(i, j, 5, 5);
+                    plotter.fillRect(i, j, 1, 1);
                 }
                 if(gameTrack.content(i, j) == TrackMaterial.CHECK1) {
                     plotter.setFill(Color.RED);

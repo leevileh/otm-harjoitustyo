@@ -13,6 +13,8 @@ public class Car {
     private Point2D movement;
     private Track track;
     private Timer carTimer;
+    private Boolean check2;
+    private Boolean check3;
     
     public Car(int x, int y, Track track, Timer carTimer) {
         this.car = new Polygon(0, 0, 20, 0, 25, 5, 20, 10, 0, 10);
@@ -21,7 +23,8 @@ public class Car {
         
         this.track = track;
         this.carTimer = carTimer;
-        
+        this.check2 = false;
+        this.check3 = false;
         this.movement = new Point2D(0, 0);
     }   
     
@@ -58,9 +61,21 @@ public class Car {
             this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY()); 
             this.setMovement(this.getMovement().multiply(0.5));            
         }
-        if (hitsMaterial(TrackMaterial.CHECK1)) {
+        if (hitsMaterial(TrackMaterial.CHECK1) && check2 == true && check3 == true) {
             carTimer.reset();
+            check2 = false;
+            check3 = false;
+            System.out.println("Kierrosaika tallennetaan");
+//        } else {
+//            carTimer.reset();
         }
+        if (hitsMaterial(TrackMaterial.CHECK2)) {
+            check2 = true;
+        }
+        if (hitsMaterial(TrackMaterial.CHECK3)) {
+            check3 = true;
+        }
+        
         this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
         this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY());
         
