@@ -8,6 +8,7 @@ import java.util.List;
 public class Player {
     
     private String name;
+    private String lap;
     private List<String> lapTimes;
     private List<Integer> intTimes;
     
@@ -31,6 +32,11 @@ public class Player {
     
     public void setLap(String lapTime) {
         this.lapTimes.add(lapTime);
+        this.lap = lapTime;
+    }
+    
+    public String getLap() {
+        return this.lap;
     }
     
     public List<String> getLaps() {

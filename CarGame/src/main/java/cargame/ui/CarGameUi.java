@@ -1,5 +1,4 @@
 
-
 package cargame.ui;
 
 import cargame.dao.Database;
@@ -13,6 +12,7 @@ import cargame.domain.Timer;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,12 +25,14 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -53,7 +55,7 @@ public class CarGameUi extends Application{
         Database playerDb = new Database("jdbc:sqlite:" + playerFile.getAbsolutePath());
         DbPlayerDao playerSaverDao = new DbPlayerDao(playerDb);
         
-        // Starting view
+    // Starting view
         Label instructionText = new Label("Enter name of player:");
         TextField nameField = new TextField();
         Button startButton = new Button("Start!");
@@ -62,8 +64,7 @@ public class CarGameUi extends Application{
         
         startPane.add(instructionText, 0, 0);
         startPane.add(nameField, 0, 1);
-        startPane.add(startButton, 0, 2);
-        
+        startPane.add(startButton, 0, 2);        
         startPane.setPrefSize(WIDTH, HEIGHT);
         startPane.setAlignment(Pos.CENTER);
         startPane.setVgap(10);
@@ -73,17 +74,14 @@ public class CarGameUi extends Application{
         Scene startScene = new Scene(startPane);
         
         
-        //Game view
+    //Game view
         this.materialUsed = TrackMaterial.CHECK3;
         
         BorderPane gamePane = new BorderPane();
-        
-//        Pane gamePane = new Pane();
         gamePane.setPrefSize(WIDTH+100, HEIGHT+100);
         
         Canvas gameCanvas = new Canvas(WIDTH, HEIGHT);
-        
-        
+                
         Button saveButton = new Button("Save track");        
         Button stopButton = new Button("End Game");
         Text text = new Text(10, 20, "Time: 0");
@@ -92,21 +90,21 @@ public class CarGameUi extends Application{
         topBar.setSpacing(10);
         topBar.getChildren().add(text);
         topBar.getChildren().add(stopButton);
-        
-        
+                
         gamePane.setTop(gameCanvas);
         gamePane.setBottom(topBar);
 //        gamePane.getChildren().add(saveButton);
+//        The comment above was left for a reason. The save button would have 
+//        been used in the track editor, which I didn't have time to finish.
+//        It has been used to create the one track available.
 
         GraphicsContext plotter = gameCanvas.getGraphicsContext2D();
         plotter.setFill(Color.BLACK);
-
         
         Track gameTrack = trackSaverDao.findTrack();
         Timer timer = new Timer(gameTrack);
         Player gamePlayer = new Player();
         Car car = new Car(WIDTH/5, (HEIGHT)/5, gameTrack, timer, gamePlayer);
-        car.move();
         
         for(int i = 0; i < WIDTH; i++) {
             for(int j = 0; j < HEIGHT; j++) {
@@ -135,7 +133,6 @@ public class CarGameUi extends Application{
         });
         
         gamePane.getChildren().add(car.getCar());
-        
         Scene gameScene = new Scene(gamePane);
         
         Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
@@ -181,7 +178,21 @@ public class CarGameUi extends Application{
             }
         }.start();
         
-        //Switching and starting scene
+    //High-score scene
+        TableView highscores = new TableView();
+        highscores.setPrefSize(WIDTH, HEIGHT);
+        
+        TableColumn nameColumn = new TableColumn("Name");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+                
+        TableColumn lapColumn = new TableColumn("Lap");
+        lapColumn.setCellValueFactory(new PropertyValueFactory<>("lap"));
+        
+        highscores.getColumns().addAll(nameColumn, lapColumn);
+        
+        Scene highscoreScene = new Scene(highscores);
+        
+    //Switching and starting scene
         
         startButton.setOnAction((event) -> {
             stage.setScene(gameScene);
@@ -199,27 +210,24 @@ public class CarGameUi extends Application{
         stopButton.setOnAction((event) -> {
             try {
                 playerSaverDao.savePlayersLaps(car.getPlayer());
-                System.out.println(playerSaverDao.findAll().toString());
+                List<Player> playerList = playerSaverDao.findAll();                
+                for (int i = 0; i < playerList.size(); i++) {
+                    Player highscorePlayer = playerList.get(i);
+                    highscores.getItems().add(highscorePlayer);
+                }
+                stage.setScene(highscoreScene);
             } catch(SQLException ex) {
                 Logger.getLogger(CarGameUi.class.getName()).log(Level.SEVERE, null, ex);
             }            
         });
-        
-        
+                
         stage.setTitle("Let's Play!");
         stage.setScene(startScene);
         stage.show();
     }
     
     public static void main(String[] args) throws ClassNotFoundException {
-//        new File("db").mkdirs();
-//        File tiedosto = new File("db", "cargame.db");
-//        Database database = new Database("jdbc:sqlite:" + tiedosto.getAbsolutePath());
-        
-//        DbTrackDao trackSaverDao = new DbTrackDao(database);
-        
         System.out.println("The game is running...");
         launch(args);
-    }    
-    
+    }        
 }

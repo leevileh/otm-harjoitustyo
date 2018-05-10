@@ -53,17 +53,17 @@ public class DbPlayerDao {
     public List<Player> findAll() throws SQLException {
         List<Player> foundList = new ArrayList<>();
         Connection conn = database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Laptimes");
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Laptimes ORDER BY intTime");
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) { 
             String name = rs.getString("playerName");
             Player foundPlayer = new Player(name);
             String laptime = rs.getString("laptime");
-            int intTime = rs.getInt("intTime");
+            Integer intTime = rs.getInt("intTime");
             
-//            foundPlayer.setIntLap(intTime);
-            System.out.println(intTime);
-            //Tässä siis jotain vielä pielessä
+//            foundPlayer.setIntLap(10);
+//            System.out.println(intTime);
+//            //Tässä siis jotain vielä pielessä
             
             foundPlayer.setLap(laptime);
             foundList.add(foundPlayer);
