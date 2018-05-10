@@ -18,18 +18,6 @@ public class DbPlayerDao {
         this.database = database;
     }
     
-//    public void savePlayer(Player player) throws SQLException {
-//        String name = player.getName();
-//        Connection conn = database.getConnection();
-//        
-//        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Player"
-//                + "(playerName)"
-//                + " VALUES (?)");
-//        stmt.setString(1, name);        
-//        stmt.executeUpdate();
-//        stmt.close();
-//    }
-    
     public void savePlayersLaps(Player player) throws SQLException {
         List<String> laptimes = player.getLaps();
         List<Integer> intTimes = player.getIntTimes();        
@@ -60,15 +48,10 @@ public class DbPlayerDao {
             Player foundPlayer = new Player(name);
             String laptime = rs.getString("laptime");
             Integer intTime = rs.getInt("intTime");
-            
-//            foundPlayer.setIntLap(10);
-//            System.out.println(intTime);
-//            //Tässä siis jotain vielä pielessä
-            
+           
             foundPlayer.setLap(laptime);
             foundList.add(foundPlayer);
         }
         return foundList;
-    }
-    
+    }    
 }

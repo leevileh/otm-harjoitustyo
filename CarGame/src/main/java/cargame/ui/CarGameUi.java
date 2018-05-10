@@ -57,6 +57,7 @@ public class CarGameUi extends Application{
         
     // Starting view
         Label instructionText = new Label("Enter name of player:");
+        Label errorText = new Label();
         TextField nameField = new TextField();
         Button startButton = new Button("Start!");
         
@@ -64,7 +65,8 @@ public class CarGameUi extends Application{
         
         startPane.add(instructionText, 0, 0);
         startPane.add(nameField, 0, 1);
-        startPane.add(startButton, 0, 2);        
+        startPane.add(errorText, 0, 2);
+        startPane.add(startButton, 0, 3);        
         startPane.setPrefSize(WIDTH, HEIGHT);
         startPane.setAlignment(Pos.CENTER);
         startPane.setVgap(10);
@@ -93,6 +95,7 @@ public class CarGameUi extends Application{
                 
         gamePane.setTop(gameCanvas);
         gamePane.setBottom(topBar);
+        
 //        gamePane.getChildren().add(saveButton);
 //        The comment above was left for a reason. The save button would have 
 //        been used in the track editor, which I didn't have time to finish.
@@ -195,8 +198,13 @@ public class CarGameUi extends Application{
     //Switching and starting scene
         
         startButton.setOnAction((event) -> {
-            stage.setScene(gameScene);
-            car.getPlayer().setName(nameField.getText());
+            if (nameField.getText().length() > 0 && nameField.getText().length() < 21) {
+                stage.setScene(gameScene);
+                car.getPlayer().setName(nameField.getText()); 
+            } else {
+                errorText.setText("Nimen tulee olla 1-20 merkkiä pitkä.");
+            }
+            
         });
         
         saveButton.setOnAction((event) -> {

@@ -44,6 +44,5 @@ public class Timer {
         this.minutes = 0;
         this.seconds = 0;
         this.tenths = 0;
-    }
-    
+    }    
 }

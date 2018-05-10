@@ -49,7 +49,5 @@ public class Player {
     
     public List<Integer> getIntTimes() {
         return this.intTimes;
-    }
-    
-    
+    }        
 }

@@ -2,8 +2,6 @@
 
 package cargame.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 
@@ -60,22 +58,11 @@ public class Car {
     
     public void move() {
         this.movement = this.movement.multiply(0.98);
-        //this.track.content(this.car.getTranslateX(), this.car.getTranslateY()) == TrackMaterial.WALL
         if (hitsMaterial(TrackMaterial.WALL)) {
-            this.setMovement(this.getMovement().multiply(-1));
-            this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
-            this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY()); 
-            this.setMovement(this.getMovement().multiply(0.5));            
+            hitsWall();            
         }
         if (hitsMaterial(TrackMaterial.CHECK1)) {
-            if (check2 == true && check3 == true) {
-                check2 = false;
-                check3 = false;
-                player.setLap(carTimer.getTime());
-                System.out.println(carTimer.getIntegerTime());
-                player.setIntLap(carTimer.getIntegerTime());
-            }
-            carTimer.reset();
+            check1();
         }
         if (hitsMaterial(TrackMaterial.CHECK2)) {
             check2 = true;
@@ -83,10 +70,8 @@ public class Car {
         if (hitsMaterial(TrackMaterial.CHECK3)) {
             check3 = true;
         }
-        
         this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
-        this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY());
-        
+        this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY());        
     }
     
     public void accelerate() {
@@ -114,17 +99,32 @@ public class Car {
     }
     
     public boolean hitsMaterial(TrackMaterial material) {
-        List carVertices = new ArrayList<>();
-        carVertices = this.car.getPoints();
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (this.track.content(this.car.getTranslateX() - 5 + i, this.car.getTranslateY() - 5 + i) == material) {
                     return true;
-                }
-//System.out.println(carVertices.get(i).toString() + "'" + carVertices.get(i+1).toString());                    
+                }                   
             }
         }
         return false;
+    }
+    
+    public void hitsWall() {
+        this.setMovement(this.getMovement().multiply(-1));
+        this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
+        this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY()); 
+        this.setMovement(this.getMovement().multiply(0.2));
+    }
+    
+    public void check1() {
+        if (check2 == true && check3 == true) {
+                check2 = false;
+                check3 = false;
+                player.setLap(carTimer.getTime());
+                System.out.println(carTimer.getIntegerTime());
+                player.setIntLap(carTimer.getIntegerTime());
+            }
+        carTimer.reset();
     }
 
 }
