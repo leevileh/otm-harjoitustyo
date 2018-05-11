@@ -31,6 +31,11 @@ public class Player {
         return this.name;
     }
     
+    /**
+     * Individual lapTime is easier to use when retrieving laptimes from database
+     * @param lapTime 
+     */
+    
     public void setLap(String lapTime) {
         this.lapTimes.add(lapTime);
         this.lap = lapTime;

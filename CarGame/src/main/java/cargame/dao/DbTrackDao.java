@@ -16,6 +16,13 @@ public class DbTrackDao {
         this.database = database;
     }
     
+    /**
+     * Saves each coordinate of a track, together with its material
+     * @param track which is saved
+     * @param material in coordinate (EMPTY is classified as material)
+     * @throws SQLException 
+     */
+    
     public void save(Track track, TrackMaterial material) throws SQLException {        
         for (int i = 0; i < track.getWidth(); i++) {
             for (int j = 0; j < track.getHeigth(); j++) {
@@ -25,6 +32,15 @@ public class DbTrackDao {
             }
         }
     }
+    
+    /**
+     * Saves an individual coordinate into the database
+     * @param x
+     * @param y
+     * @param trackId is used to recognize coordinates from different tracks
+     * @param materialId is used to encode different materials
+     * @throws SQLException 
+     */
     
     private void saveCoordinate(int x, int y, int trackId, int materialId) throws SQLException {
         Connection conn = database.getConnection();
@@ -39,6 +55,12 @@ public class DbTrackDao {
         stmt.close(); 
         conn.close();
     }
+    
+    /**
+     * Finds all coordinates of a track
+     * @return Track with all materials set
+     * @throws SQLException 
+     */
     
     public Track findTrack() throws SQLException {
         Track foundTrack = new Track(CarGameUi.WIDTH, CarGameUi.HEIGHT, "DbTrack");

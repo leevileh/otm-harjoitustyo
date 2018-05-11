@@ -26,12 +26,26 @@ public class Track {
         }
     }
     
+    /**
+     * Adds a certain material to a certain coordinate
+     * @param x
+     * @param y
+     * @param material 
+     */
+    
     public void add(int x, int y, TrackMaterial material) {
         if (x > 0 && x < this.width && y > 0 && y < this.height) {
             this.trackMap.get(x).put(y, material);
         }
     }
-        
+    
+    /**
+     * Finds which material a coordinate contains
+     * @param x
+     * @param y
+     * @return 
+     */
+    
     public TrackMaterial content(double x, double y) {
         if (x <= 0 || y <= 0 || x > width || y > height) {
             return TrackMaterial.WALL;

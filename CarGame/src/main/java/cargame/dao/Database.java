@@ -6,7 +6,13 @@ import java.sql.*;
 public class Database {
 
     private String databaseAddress;
-
+    
+    /**
+     * Sets the database with correct database address
+     * @param databaseAddress database address to be used
+     * @throws ClassNotFoundException 
+     */
+    
     public Database(String databaseAddress) throws ClassNotFoundException {
         this.databaseAddress = databaseAddress;
         
@@ -24,6 +30,11 @@ public class Database {
         }
     }
 
+    /**
+     * Creates DriverManager connection with correct database address
+     * @return Connection
+     * @throws SQLException 
+     */
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(databaseAddress);
     }

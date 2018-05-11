@@ -18,6 +18,12 @@ public class DbPlayerDao {
         this.database = database;
     }
     
+    /**
+     * Saves each laptime from a player into player.db using class savePlayersLaps
+     * @param player is the player which is saved
+     * @throws SQLException 
+     */
+    
     public void savePlayersLaps(Player player) throws SQLException {
         List<String> laptimes = player.getLaps();
         List<Integer> intTimes = player.getIntTimes();        
@@ -25,6 +31,14 @@ public class DbPlayerDao {
             saveLapTime(laptimes.get(i), intTimes.get(i), player.getName());
         }
     }
+    
+    /**
+     * Saves an individual laptime
+     * @param laptime laptime which is saved in String-format
+     * @param intTime laptime which is saved in int-format, used for ordering
+     * @param playerName name of the player who drove the laps
+     * @throws SQLException 
+     */
     
     public void saveLapTime(String laptime, int intTime, String playerName) throws SQLException {
         Connection conn = database.getConnection();
@@ -38,6 +52,12 @@ public class DbPlayerDao {
         stmt.close();
         conn.close();
     }
+    
+    /**
+     * Class for finding all players in player.db
+     * @return list of all players found
+     * @throws SQLException 
+     */
     
     public List<Player> findAll() throws SQLException {
         List<Player> foundList = new ArrayList<>();
