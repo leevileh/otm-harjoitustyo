@@ -2,6 +2,7 @@
 Sovellus on erittäin yksinkertainen autopeli. Tällä hetkellä sovellus on tilassa, jossa avautuvaan peliruutuun voi piirtää radan seinää, ja autolla voi ajaa. Auton ja seinän kohtaaminen ei vielä toimi kovin toivotusti. Lisäksi kentän luominen ja ajaminen on tarkoitus eriyttää myöhemmin.
 
 ## Releaset
+[Loppupalautus](https://github.com/leevileh/otm-harjoitustyo/releases/tag/0.1)
 [Release 1](https://github.com/leevileh/otm-harjoitustyo/releases/tag/viikko5)
 
 ## Dokumentaatio
