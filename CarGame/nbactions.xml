@@ -37,4 +37,11 @@
                 <goal>package</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-Testikattavuus</actionName>
+            <displayName>Testikattavuus</displayName>
+            <goals>
+                <goal>jacoco:report</goal>
+            </goals>
+        </action>
     </actions>

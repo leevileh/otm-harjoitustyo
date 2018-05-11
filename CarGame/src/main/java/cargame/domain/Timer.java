@@ -32,7 +32,7 @@ public class Timer {
         if (seconds < 10) {
             return ("0" + minutes + ":" + "0" + seconds + ":" + tenths);
         } else {
-            return (minutes + ":" + seconds + ":" + tenths);
+            return ("0" + minutes + ":" + seconds + ":" + tenths);
         }        
     }
     

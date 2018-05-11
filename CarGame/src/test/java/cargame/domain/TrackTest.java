@@ -13,28 +13,27 @@ import static org.junit.Assert.*;
 
 public class TrackTest {
     
-    public TrackTest() {
-    }
+    Track testTrack;
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
     
     @Before
     public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+        testTrack = new Track(10,10, "TestTrack");
     }
 
     @Test
-    public void trackMapContainsEmptyMaterial() {
-        Track testTrack = new Track(10,10, "TestTrack");
+    public void trackMapContainsEmptyMaterial() {        
         assertEquals(TrackMaterial.EMPTY, testTrack.content(5, 5));
+    }
+    
+    @Test
+    public void outsideTrackIsWall() {
+        assertEquals(TrackMaterial.WALL, testTrack.content(15, 15));
+    }
+    
+    @Test
+    public void addingMaterialWorks() {
+        testTrack.add(1, 1, TrackMaterial.CHECK1);
+        assertEquals(TrackMaterial.CHECK1, testTrack.content(1, 1));
     }
 }

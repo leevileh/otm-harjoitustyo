@@ -40,6 +40,10 @@ public class Car {
         return this.player;
     }
     
+    public Timer getTimer() {
+        return this.carTimer;
+    }
+    
     public void setMovement(Point2D movement) {
         this.movement = movement;
     }  
@@ -110,8 +114,8 @@ public class Car {
         if (check2 == true && check3 == true) {
             check2 = false;
             check3 = false;
-            player.setLap(carTimer.getTime());
-            player.setIntLap(carTimer.getIntegerTime());
+            this.player.setLap(carTimer.getTime());
+            this.player.setIntLap(carTimer.getIntegerTime());
         }
         carTimer.reset();
     }
