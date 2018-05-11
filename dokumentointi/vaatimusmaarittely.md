@@ -30,6 +30,7 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli pelaaja.
   - kierrosaika tallennetaan kun auto ylittää uudestaan lähtö/maaliviivan
     - tämä nollaa ajanoton
   - peliä ei voi huijata ylittämällä lähtöviivaa, peruuttamalla ja ylittämällä se heti uudestaan  
+- Kentälle voi piirtää "seinää", mutta kenttämuokkausten tallentaminen ei ole tällä hetkellä mahdollista.
   
 ### Pelaamisen jälkeen
 - käyttäjä voi tarkastella parhaita kierrosaikoja "high-score" -listalta
@@ -43,4 +44,4 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli pelaaja.
 - mahdollisuus nähdä paras ajettu kierros "haamuna" radalla
 - mahdollisuus kaksinpeliin
 - pelimusiikki ja äänitehosteita
-- mahdollisuus piirtää omia ratoja (Iso osa toiminnallisuudesta jo toteutettu)
+- mahdollisuus piirtää omia ratoja (iso osa toiminnallisuudesta jo toteutettu)
