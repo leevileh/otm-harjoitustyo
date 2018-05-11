@@ -1,6 +1,9 @@
 
-
 package cargame.domain;
+
+/**
+ * Class that is responsible for the movement of the car
+ */
 
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
@@ -60,6 +63,10 @@ public class Car {
         this.car.setRotate(this.car.getRotate() - 5);
     }
     
+    /**
+     * What happens when the car moves and encounters different materials
+     */
+    
     public void move() {
         this.movement = this.movement.multiply(0.98);
         if (hitsMaterial(TrackMaterial.WALL)) {
@@ -78,6 +85,11 @@ public class Car {
         this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY());        
     }
     
+    /**
+     * Changing the speed of the car
+     * @param factor gives the amount of acceleration, where positive amount is forward and negative backward
+     */
+    
     public void accelerate(double factor) {
         double xChange = Math.cos(Math.toRadians(this.car.getRotate()));
         double yChange = Math.sin(Math.toRadians(this.car.getRotate()));
@@ -88,9 +100,19 @@ public class Car {
         this.movement = this.movement.add(xChange, yChange);
     }
     
+    /**
+     * Makes the car slow down a bit like air resistance does in real life 
+     */
+    
     public void decelerate() {
         this.movement = this.movement.multiply(0.98);
     }
+    
+    /**
+     * Gives a larger area than just a single point for the car to hit materials
+     * @param material specifies which material the car should hit so that true is returned
+     * @return true if the car hits the material specified
+     */
     
     public boolean hitsMaterial(TrackMaterial material) {
         for (int i = 0; i < 10; i++) {
@@ -103,12 +125,21 @@ public class Car {
         return false;
     }
     
+    /**
+     * Makes the car bump backwards when hitting a wall
+     */
+    
     public void hitsWall() {
         this.setMovement(this.getMovement().multiply(-1));
         this.car.setTranslateX(this.car.getTranslateX() + this.movement.getX());
         this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY()); 
         this.setMovement(this.getMovement().multiply(0.2));
     }
+    
+    /**
+     * Saves laptime and resets timer if lap has been driven through the checkpoints in the correct order 
+     * Otherwise only resets timer
+     */
     
     public void check1() {
         if (check2 == true && check3 == true) {
