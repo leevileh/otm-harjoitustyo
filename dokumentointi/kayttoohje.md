@@ -17,6 +17,7 @@ Syötä nimesi aloitusnäkymään ja aloita pelaaminen painamalla "Start!" -napp
 ## Pelaaminen
 Peliä pelataan nuolinäppäimiä hyödyntäen. Tarkoitus on ajaa mustalla rajattu rata mahdollisimman nopeasti ympäri. Punaisella alueella ajastin nollautuu. Mikäli kierros on ajettu kokonaisuudessaan, tallentuu kierrosaika pelin välimuistiin punaiselle alueelle saavuttaessa. Kerralla voi ajaa useamman kierroksen, jotka kaikki tallentuvat välimuistiin. Pelaamisen voi lopettaa painamalla "End Game" -nappia.
 <img src="https://github.com/leevileh/hello-world/blob/master/Pelin%C3%A4kym%C3%A4.PNG">
+Peliin voi myös piirtää "seinää" hiiren avulla. Piirretty seinä ei tallennu pysyvästi tietokantaan.
 
 ## Parhaat kierrosajat
 "End Game" -nappi tallentaa välimuistissa olevat kierrosajat pysyvään tietokantaan, ja tuo näkyviin tietokannasta löytyvät parhaat kierrosajat. Pelin voi aloittaa alusta sulkemalla pelin ja käynnistämällä uudelleen. 
