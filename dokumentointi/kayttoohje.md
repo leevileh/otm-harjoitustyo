@@ -4,7 +4,7 @@ Lataa tiedosto [cargame.jar](https://github.com/leevileh/otm-harjoitustyo/releas
 Lataa tietokanta [cargame.db](https://github.com/leevileh/otm-harjoitustyo/blob/master/CarGame/db/cargame.db) 
 
 ## Konfigurointi
-Pidä huolta siitä että cargame.jar ja cargame.db ovat samassa tiedostosijainnissa, muuten sovellus ei toimi.
+Pidä huolta siitä että cargame.jar -tiedoston sijainnissa on kansio db, joka sisältää tietokannan cargame.db, muuten sovellus ei toimi.
 
 Ohjelma käynnistetään komennolla:
 
