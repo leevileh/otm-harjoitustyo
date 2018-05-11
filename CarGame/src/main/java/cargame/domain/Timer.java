@@ -22,7 +22,7 @@ public class Timer {
             this.seconds++;
             this.tenths = 0;
         }
-        if (this.seconds == 59) {
+        if (this.seconds == 60) {
             this.minutes++;
             this.seconds = 0;
         }

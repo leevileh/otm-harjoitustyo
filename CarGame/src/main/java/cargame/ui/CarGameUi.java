@@ -77,7 +77,7 @@ public class CarGameUi extends Application{
         
         
     //Game view
-        this.materialUsed = TrackMaterial.CHECK3;
+        this.materialUsed = TrackMaterial.WALL;
         
         BorderPane gamePane = new BorderPane();
         gamePane.setPrefSize(WIDTH+100, HEIGHT+100);
@@ -125,7 +125,7 @@ public class CarGameUi extends Application{
         gameCanvas.setOnMouseDragged((event) -> {
             int coordinateX = (int) event.getX();
             int coordinateY = (int) event.getY();
-            plotter.setFill(Color.RED);
+            plotter.setFill(Color.BLACK);
             plotter.fillRect(coordinateX, coordinateY, 5, 5);
             
             for(int i = 0; i < 5; i++){
