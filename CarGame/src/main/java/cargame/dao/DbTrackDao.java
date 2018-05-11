@@ -8,7 +8,7 @@ import cargame.ui.CarGameUi;
 import java.util.*;
 import java.sql.*;
 
-public class DbTrackDao implements TrackDao<Track, Integer> {
+public class DbTrackDao {
 
     private Database database;
     
