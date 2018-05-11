@@ -18,4 +18,6 @@
 | 28.04 | 4   | Uusia materiaaleja, niiden toiminta ja yhdistäminen tietokantaan |
 | 01.05 | 2   | Jatkoa 28.04. päivä päättyy merge-conflictiin |
 | 02.05.| 8   | Merge-conflicti kuntoon, Player -luokat ja uusi tietokanta |
+| 10.05.| 4   | Peli valmiiksi palautusta varten, koodin siistimistä |
+| 11.05.| 10  | Testauksen kehittämistä, dokumentaation kirjoittamista ym. viimeistelyä |
 | yht | 48 |
