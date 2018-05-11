@@ -3,6 +3,7 @@ Sovellus on erittäin yksinkertainen autopeli. Peliin annetaan oma nimi, jonka j
 
 ## Releaset
 [Loppupalautus](https://github.com/leevileh/otm-harjoitustyo/releases/tag/0.1)
+  
 [Release 1](https://github.com/leevileh/otm-harjoitustyo/releases/tag/viikko5)
 
 ## Dokumentaatio
