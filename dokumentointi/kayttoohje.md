@@ -11,7 +11,7 @@ Ohjelma käynnistetään komennolla:
 java -jar cargame.jar
 
 ## Nimen syöttäminen
-Syötä nimesi aloitusnäkymään ja aloita pelaaminen painamalla "Start!" -nappia.
+Syötä nimesi aloitusnäkymään ja aloita pelaaminen painamalla "Start!" -nappia. Nimen on oltava 1-20 merkkiä pitkä.
 <img src="https://github.com/leevileh/hello-world/blob/master/Aloitusn%C3%A4kym%C3%A4.PNG">
 
 ## Pelaaminen
