@@ -10,6 +10,12 @@ yhden kierroksen radalla. Parhaita kierrosaikoja voi tarkastella "high-score" -l
 
 Sovelluksella on ainoastaan yksi käyttäjärooli eli pelaaja. 
 
+## Käyttöliittymä
+Sovellus koostuu aloitusnäkymästä, pelinäkymästä, ja parhaat kierrosajat -näkymästä:
+<img src="https://github.com/leevileh/hello-world/blob/master/Aloitusn%C3%A4kym%C3%A4.PNG">
+<img src="https://github.com/leevileh/hello-world/blob/master/Pelin%C3%A4kym%C3%A4.PNG">
+<img src="https://github.com/leevileh/hello-world/blob/master/Loppun%C3%A4kym%C3%A4.PNG">
+
 ## Perusversion tarjoama toiminnallisuus
 
 ### Ennen pelaamisen aloittamista
