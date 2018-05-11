@@ -36,7 +36,8 @@ public class DbTrackDao implements TrackDao<Track, Integer> {
         stmt.setInt(3, trackId);
         stmt.setInt(4, materialId);        
         stmt.executeUpdate();
-        stmt.close();        
+        stmt.close(); 
+        conn.close();
     }
     
     public Track findTrack() throws SQLException {

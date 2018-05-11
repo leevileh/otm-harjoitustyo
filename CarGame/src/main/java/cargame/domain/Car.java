@@ -74,24 +74,14 @@ public class Car {
         this.car.setTranslateY(this.car.getTranslateY() + this.movement.getY());        
     }
     
-    public void accelerate() {
+    public void accelerate(double factor) {
         double xChange = Math.cos(Math.toRadians(this.car.getRotate()));
         double yChange = Math.sin(Math.toRadians(this.car.getRotate()));
         
-        xChange *= 0.1;
-        yChange *= 0.1;
+        xChange *= factor;
+        yChange *= factor;
         
         this.movement = this.movement.add(xChange, yChange);
-    }
-    
-    public void reverse() {
-        double xChange = Math.cos(Math.toRadians(this.car.getRotate()));
-        double yChange = Math.sin(Math.toRadians(this.car.getRotate()));
-        
-        xChange *= 0.05;
-        yChange *= 0.05;
-        
-        this.movement = this.movement.add(-xChange, -yChange);
     }
     
     public void decelerate() {
@@ -118,12 +108,11 @@ public class Car {
     
     public void check1() {
         if (check2 == true && check3 == true) {
-                check2 = false;
-                check3 = false;
-                player.setLap(carTimer.getTime());
-                System.out.println(carTimer.getIntegerTime());
-                player.setIntLap(carTimer.getIntegerTime());
-            }
+            check2 = false;
+            check3 = false;
+            player.setLap(carTimer.getTime());
+            player.setIntLap(carTimer.getIntegerTime());
+        }
         carTimer.reset();
     }
 

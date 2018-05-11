@@ -36,6 +36,7 @@ public class DbPlayerDao {
         stmt.setString(3, playerName);
         stmt.executeUpdate();
         stmt.close();
+        conn.close();
     }
     
     public List<Player> findAll() throws SQLException {
@@ -52,6 +53,9 @@ public class DbPlayerDao {
             foundPlayer.setLap(laptime);
             foundList.add(foundPlayer);
         }
+        stmt.close();
+        rs.close();
+        conn.close();
         return foundList;
     }    
 }

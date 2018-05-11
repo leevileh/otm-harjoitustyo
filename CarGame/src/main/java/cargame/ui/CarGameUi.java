@@ -160,7 +160,7 @@ public class CarGameUi extends Application{
                 }
                 
                 if(pressedKeys.getOrDefault(KeyCode.UP, false)){
-                    car.accelerate();
+                    car.accelerate(0.1);
                 }
                 
                 if((pressedKeys.getOrDefault(KeyCode.UP, false)) == false){
@@ -168,7 +168,7 @@ public class CarGameUi extends Application{
                 }
                 
                 if(pressedKeys.getOrDefault(KeyCode.DOWN, false)) {
-                    car.reverse();
+                    car.accelerate(-0.05);
                 }
                 
                 time ++;   
